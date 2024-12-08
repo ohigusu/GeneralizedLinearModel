@@ -1,66 +1,62 @@
 # Island Scrub Jay Habitat Data (2008)
 
-## 📄 Dataset Overview
-This dataset was collected during the fall of 2008 on Santa Cruz Island, California, focusing on the habitat of **Island Scrub Jays**. The data includes environmental and spatial features observed at **307 survey sites** and provides a foundation for analyzing the habitat preferences and predicting the presence of Island Scrub Jays.
+## 📄 데이터셋 개요
+이 데이터셋은 2008년 가을, 캘리포니아 산타 크루즈 섬에서 **Island Scrub Jay**의 서식지를 조사하여 수집된 것이다. **307개 조사 지점**에서 환경 및 공간적 특성을 측정하였으며, Island Scrub Jay의 서식지 선호 유형과 존재 여부를 예측하는 데 활용된다.
 
-### Dataset Summary
-- **Total Dataset:** 5625 observations
-- **Variables:**
-  1. **isj:** Presence of Island Scrub Jay (`1`: Present, `0`: Absent)
-  2. **x:** X-coordinate of the survey site
-  3. **y:** Y-coordinate of the survey site
-  4. **elev:** Elevation (meters above sea level)
-  5. **forest:** Proportion of forest cover in the survey site
-  6. **chap:** Proportion of chaparral (shrubland) cover in the survey site
-- **Missing Data:** 
-  - Observations containing NA: **5322 rows**
-
-### Data Characteristics
-- The dataset aims to explore the spatial and environmental characteristics of Island Scrub Jay habitats.
-- Missing values account for a significant portion of the dataset and require thoughtful preprocessing.
+### 데이터셋 요약
+- **전체 데이터셋 크기:** 5625개의 관측치
+- **변수:**
+  1. **isj:** Island Scrub Jay의 존재 여부 (`1`: 존재, `0`: 부재)
+  2. **x:** 조사 지점의 X 좌표
+  3. **y:** 조사 지점의 Y 좌표
+  4. **elev:** 고도
+  5. **forest:** 조사 지점의 숲 비율
+  6. **chap:** 조사 지점의 chaparral(떨기나무) 비율
+- **결측치:**
+  - NA가 포함된 관측치: **5322개**
 
 ---
 
-## 🎯 Analysis Goals
+## 🎯 분석 목표
 
-### Goal 1: Understand Terrain Preferences of Scrub Jays
-- Explore the relationship between the presence of Island Scrub Jays (`isj`) and environmental variables such as **elevation**, **forest proportion**, and **chaparral proportion** to identify preferred terrain types.
+### 목표 1: Scrub Jay의 선호 지형 이해
+- **고도**, **forest 비율**, **chaparral 비율**과 같은 환경 변수를 활용해 Island Scrub Jay의 존재 여부(`isj`)와의 관계를 분석한다.
 
-### Goal 2: Predict Scrub Jay Presence Across the Island
-Build and compare two predictive models based on the dataset, including both existing and newly defined variables:
-1. **Model with Lowest Misclassification Rate:** 
-   - Identify the combination of newly defined variables that minimizes the misclassification rate.
-   - Use these variables along with existing variables to build a predictive model.
-2. **Model with Lowest AIC:**
-   - Evaluate combinations of new and existing variables.
-   - Select the variable combination with the lowest Akaike Information Criterion (AIC).
-   - Use these variables to build a second predictive model.
+### 목표 2: Scrub Jay의 섬 내 존재 여부 예측
+주어진 데이터셋을 활용하여 두 가지 예측 모델을 비교한다:
+
+1. **오분류율이 가장 낮은 모델:**
+   - 새롭게 정의한 변수 중 오분류율(Misclassification Rate)을 최소화하는 변수 조합을 선택한다.
+   - 이 조합에 기존 변수를 추가하여 예측 모델을 생성한다.
+
+2. **AIC가 가장 낮은 모델:**
+   - 새롭게 정의한 변수와 기존 변수를 조합하여 AIC(Akaike Information Criterion)가 가장 낮은 변수의 조합을 찾는다.
+
 ---
-## 🛠️ Analysis Workflow
 
-### Step 1: Generate New Variables
-- Add **polynomial terms** and **interaction terms** to the dataset to account for potential non-linear relationships and interactions between variables.
-- Ensure that newly defined variables provide meaningful information regarding Scrub Jay presence.
+## 🛠️ 분석 워크플로우
 
-### Step 2: Split Dataset
-- Split the data into **train (70%)** and **test (30%)** sets.
+### 단계 1: 새로운 변수 생성
+- 변수 간의 비선형 관계와 상호작용을 반영하기 위해 **다항식 변수(polynomial terms)**와 **상호작용 변수(interaction terms)**를 추가한다.
 
-### Step 3: Model Selection
-1. **Model 3-1: Variables Minimizing Misclassification Rate**
-   - Use a for-loop to test various combinations of the newly defined variables while retaining the original variables.
-   - Fit models on the training set and evaluate misclassification rates on the test set to identify the optimal combination.
-   
-2. **Model 3-2: Variables Minimizing AIC**
-   - Use a for-loop to test combinations of new variables (excluding original variables).
-   - Fit models on the training set and select the combination that results in the lowest AIC value.
+### 단계 2: 데이터 분할
+- 데이터를 **학습(train, 70%)**과 **테스트(test, 30%)** 데이터로 나눈다.
 
-### Step 4: Hypothesis Testing
-- Conduct hypothesis tests to identify variables with significant effects on the response variable (`isj`).
+### 단계 3: 모델 선택
+1. **모델 3-1: 오분류율 최소화 변수 조합**
+   - 새롭게 정의된 변수 중에서 오분류율을 최소화하는 조합을 찾기 위해 for문을 사용한다.
 
-### Step 5: Final Model and Visualization
-- Compare the results of **Model 3-1** and **Model 3-2**.
-- Select the model with the lowest misclassification rate.
-- Visualize the results and apply the selected model to the dataset of 2484 observations for final predictions.
+2. **모델 3-2: AIC 최소화 변수 조합**
+   - 기존 변수를 제외하고 새롭게 정의된 변수 조합 중 AIC가 가장 낮은 조합을 찾기 위해 변수선택법을 사용한다.
+
+### 단계 4: 가설 검정
+- 반응 변수(`isj`)에 유의미한 영향을 미치는 변수를 식별하기 위해 가설 검정을 진행한다.
+
+### 단계 5: 최종 모델과 시각화
+- **모델 3-1**과 **모델 3-2**의 결과를 비교한다.
+- 오분류율이 가장 낮은 모델을 선택한다.
+- 선택된 모델의 결과를 시각화하고, 최종적으로 2484개의 데이터셋에 모델을 적용하여 예측을 진행한다.
+"""
 
 
 
