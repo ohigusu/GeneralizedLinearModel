@@ -4,7 +4,7 @@
 This dataset was collected during the fall of 2008 on Santa Cruz Island, California, focusing on the habitat of **Island Scrub Jays**. The data includes environmental and spatial features observed at **307 survey sites** and provides a foundation for analyzing the habitat preferences and predicting the presence of Island Scrub Jays.
 
 ### Dataset Summary
-- **Total Dataset:** 5625 observations
+- **Total Dataset:** 5625 observations
 - **Variables:**
   1. **isj:** Presence of Island Scrub Jay (`1`: Present, `0`: Absent)
   2. **x:** X-coordinate of the survey site
@@ -62,7 +62,5 @@ Build and compare two predictive models based on the dataset, including both exi
 - Select the model with the lowest misclassification rate.
 - Visualize the results and apply the selected model to the dataset of 2484 observations for final predictions.
 
----
 
-## 📂 Repository Structure
 
