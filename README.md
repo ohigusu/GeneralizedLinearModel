@@ -1,4 +1,4 @@
-# Island Scrub Jay Habitat Data (2008)
+# Island Scrub Jay Habitat Data
 
 ## 📄 프로젝트 개요
 Island Scrub Jay는 캘리포니아 산타 크루즈 섬에만 서식하는 종으로, 이들의 서식지 선호를 이해하고 예측하는 것은 생태계 관리 및 종 보전에 필수적이다. 본 프로젝트는 2008년 가을에 수집된 307개 조사 지점의 환경 및 공간 데이터를 기반으로, 변수 간의 관계를 설명할 수 있는 해석 가능한 모델을 구축하여 Island Scrub Jay 서식지의 특징을 분석하고 예측하는 것을 목표로 한다.
